@@ -1,0 +1,1046 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giải Mã Nhà Nước Và Cách Mạng Xã Hội</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg-main: #f8fafc;
+            --panel-bg: rgba(255, 255, 255, 0.85);
+            --primary: #1e3a8a;
+            --primary-hover: #1e40af;
+            --accent: #3b82f6;
+            --accent-light: #eff6ff;
+            --text: #0f172a;
+            --text-muted: #64748b;
+            --border: rgba(226, 232, 240, 0.8);
+            --success: #10b981;
+            --error: #ef4444;
+            --vh: 1vh;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            color: var(--text);
+            /* Premium soft mesh gradient background */
+            background: radial-gradient(circle at 15% 50%, rgba(224, 242, 254, 0.6), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(219, 234, 254, 0.8), transparent 25%),
+                #f1f5f9;
+            height: calc(100 * var(--vh));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .app-wrapper {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            padding: clamp(16px, 2vh, 32px) clamp(20px, 3vw, 40px);
+            gap: clamp(16px, 2.5vh, 24px);
+            max-width: 1600px;
+            margin: 0 auto;
+            z-index: 1;
+        }
+
+        /* Glassmorphism Header */
+        header.header-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex: 0 0 auto;
+            background: var(--panel-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            padding: 20px 32px;
+            border-radius: 24px;
+            box-shadow: 0 10px 30px -10px rgba(30, 58, 138, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+
+        .title-block {
+            min-width: 0;
+        }
+
+        #game-title {
+            font-family: 'Playfair Display', serif;
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: clamp(26px, 3.5vw, 36px);
+            font-weight: 900;
+            line-height: 1.2;
+            letter-spacing: 0.01em;
+            text-shadow: 0 4px 15px rgba(59, 130, 246, 0.1);
+        }
+
+        #game-subtitle {
+            color: var(--text-muted);
+            font-size: clamp(14px, 1.5vw, 16px);
+            margin-top: 6px;
+            font-weight: 500;
+            letter-spacing: 0.02em;
+        }
+
+        .controls {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex: 0 0 auto;
+        }
+
+        .progress-box {
+            display: flex;
+            align-items: baseline;
+            gap: 8px;
+            padding: 10px 24px;
+            border-radius: 99px;
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            color: var(--primary);
+            font-weight: 600;
+            box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.5);
+        }
+
+        #progress-count {
+            font-size: clamp(20px, 2.5vw, 24px);
+            font-weight: 800;
+            color: var(--accent);
+            font-variant-numeric: tabular-nums;
+        }
+
+        .btn {
+            cursor: pointer;
+            background: #ffffff;
+            border: 1px solid var(--border);
+            color: var(--primary);
+            border-radius: 99px;
+            /* Pill shape */
+            padding: 12px 28px;
+            font-weight: 700;
+            font-size: 15px;
+            font-family: inherit;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04), inset 0 1px 0 rgba(255, 255, 255, 1);
+        }
+
+        .btn:hover {
+            background: var(--accent-light);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(59, 130, 246, 0.15);
+            border-color: rgba(59, 130, 246, 0.3);
+            color: var(--accent);
+        }
+
+        .btn:active {
+            transform: translateY(1px);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+            border: none;
+            color: white;
+            box-shadow: 0 6px 15px rgba(30, 58, 138, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #1e40af 0%, #1d4ed8 100%);
+            color: white;
+            box-shadow: 0 10px 25px rgba(30, 58, 138, 0.35);
+        }
+
+        main.stage-area {
+            flex: 1 1 auto;
+            min-height: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .stage {
+            position: relative;
+            height: 100%;
+            max-width: 100%;
+            aspect-ratio: 706 / 474;
+            border-radius: 28px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(30, 58, 138, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.6) inset;
+            background: #ffffff;
+        }
+
+        .stage svg {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        .pieces {
+            position: absolute;
+            inset: 0;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+            gap: 0;
+            padding: 0;
+        }
+
+        .piece {
+            position: relative;
+            cursor: pointer;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 0;
+            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.15);
+            overflow: hidden;
+        }
+
+        /* Subtle diagonal shimmer effect on tiles */
+        .piece::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(105deg, transparent 20%, rgba(255, 255, 255, 0.1) 25%, transparent 30%);
+            background-size: 200% 200%;
+            transition: all 0.5s ease;
+        }
+
+        .piece:nth-child(odd) {
+            background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+        }
+
+        .piece:nth-child(even) {
+            background: linear-gradient(135deg, #334155 0%, #475569 100%);
+        }
+
+        .piece:hover {
+            transform: scale(1.03) translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25), inset 0 2px 4px rgba(255, 255, 255, 0.3);
+            z-index: 10;
+        }
+
+        .piece:hover::before {
+            background-position: 100% 100%;
+        }
+
+        .piece-num {
+            font-family: 'Playfair Display', serif;
+            font-weight: 800;
+            font-size: clamp(48px, 6vw, 72px);
+            color: white;
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            z-index: 2;
+        }
+
+        .piece:hover .piece-num {
+            transform: scale(1.15);
+            text-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .piece.opened {
+            opacity: 0;
+            transform: scale(0.8) translateY(20px);
+            pointer-events: none;
+        }
+
+        .piece.gone {
+            visibility: hidden;
+        }
+
+        .piece.shake {
+            animation: shake 0.5s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+        }
+
+        /* Modal */
+        .overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(15, 23, 42, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2vh 2vw;
+            z-index: 20;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            opacity: 1;
+            transition: opacity 0.3s ease;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .modal {
+            width: min(900px, 94vw);
+            max-height: 92vh;
+            display: flex;
+            flex-direction: column;
+            background: rgba(255, 255, 255, 0.98);
+            border-radius: 32px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 1);
+            padding: clamp(32px, 5vh, 48px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            transform: translateY(0) scale(1);
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .modal.shake {
+            animation: shake 0.5s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+        }
+
+        @keyframes shake {
+
+            10%,
+            90% {
+                transform: translate3d(-2px, 0, 0);
+            }
+
+            20%,
+            80% {
+                transform: translate3d(4px, 0, 0);
+            }
+
+            30%,
+            50%,
+            70% {
+                transform: translate3d(-8px, 0, 0);
+            }
+
+            40%,
+            60% {
+                transform: translate3d(8px, 0, 0);
+            }
+        }
+
+        .modal-head {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 32px;
+        }
+
+        #modal-kicker {
+            color: var(--text-muted);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            font-size: 14px;
+            background: #f1f5f9;
+            padding: 6px 14px;
+            border-radius: 99px;
+        }
+
+        #modal-num {
+            font-weight: 800;
+            color: var(--accent);
+            font-size: 20px;
+        }
+
+        .close-x {
+            margin-left: auto;
+            background: #f8fafc;
+            border: 1px solid var(--border);
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            font-size: 18px;
+            cursor: pointer;
+            color: var(--text-muted);
+            display: grid;
+            place-items: center;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .close-x:hover {
+            background: #fee2e2;
+            color: var(--error);
+            border-color: #fca5a5;
+            transform: rotate(90deg);
+        }
+
+        .q-text {
+            line-height: 1.4;
+            margin-bottom: 40px;
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(28px, 3.5vw, 40px);
+            font-weight: 800;
+            color: var(--primary);
+            text-align: center;
+            letter-spacing: -0.01em;
+        }
+
+        .answers {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .ans {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            text-align: left;
+            cursor: pointer;
+            border: 2px solid transparent;
+            border-radius: 24px;
+            padding: 20px 24px;
+            background: var(--bg-main);
+            color: var(--text);
+            font-family: inherit;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            min-height: 80px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+        }
+
+        .ans:hover {
+            background: #ffffff;
+            border-color: var(--accent);
+            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.15);
+            transform: translateY(-3px);
+        }
+
+        .ans .badge {
+            flex: 0 0 auto;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            background: #ffffff;
+            color: var(--primary);
+            font-weight: 800;
+            font-size: 20px;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--border);
+        }
+
+        .ans:hover .badge {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            color: white;
+            border-color: transparent;
+            box-shadow: 0 8px 20px rgba(30, 58, 138, 0.3);
+        }
+
+        .ans-text {
+            font-size: 17px;
+            font-weight: 600;
+            line-height: 1.5;
+        }
+
+        .ans.wrong {
+            background: #fef2f2;
+            border-color: var(--error);
+            color: #991b1b;
+            animation: shake 0.5s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+        }
+
+        .ans.wrong .badge {
+            background: var(--error);
+            color: white;
+            border-color: transparent;
+        }
+
+        .ans.right {
+            background: #f0fdf4;
+            border-color: var(--success);
+            color: #166534;
+        }
+
+        .ans.right .badge {
+            background: var(--success);
+            color: white;
+            border-color: transparent;
+        }
+
+        .answers.locked .ans {
+            pointer-events: none;
+        }
+
+        .feedback {
+            margin-top: 32px;
+            min-height: 28px;
+            font-weight: 700;
+            text-align: center;
+            font-size: 20px;
+        }
+
+        #fb-wrong {
+            color: var(--error);
+        }
+
+        #fb-right {
+            color: var(--success);
+        }
+
+        /* Complete */
+        .complete {
+            position: fixed;
+            inset: 0;
+            z-index: 30;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(16px);
+            padding: 24px;
+        }
+
+        .complete-card {
+            position: relative;
+            z-index: 2;
+            max-width: 650px;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 36px;
+            padding: 56px 40px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 1);
+            animation: pop 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+        }
+
+        #complete-text {
+            line-height: 1.5;
+            margin-bottom: 40px;
+            font-family: 'Playfair Display', serif;
+            font-size: 32px;
+            font-weight: 800;
+            color: var(--primary);
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .confetti {
+            position: absolute;
+            top: -20px;
+            width: 12px;
+            height: 16px;
+            z-index: 1;
+            animation: fall linear forwards;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(110vh) rotate(720deg);
+            }
+        }
+
+        @media (max-width: 768px) {
+            header.header-bar {
+                flex-wrap: wrap;
+                gap: 16px;
+                padding: 16px 24px;
+                border-radius: 20px;
+            }
+
+            .answers {
+                grid-template-columns: 1fr;
+            }
+
+            .pieces {
+                grid-template-columns: repeat(2, 1fr);
+                grid-template-rows: repeat(3, 1fr);
+                padding: 0;
+            }
+
+            #game-title {
+                font-size: 22px;
+            }
+
+            .piece-num {
+                font-size: 48px;
+            }
+
+            .modal {
+                padding: 24px;
+                border-radius: 24px;
+            }
+
+            .q-text {
+                font-size: 24px;
+                margin-bottom: 24px;
+            }
+
+            .ans {
+                padding: 16px;
+                border-radius: 16px;
+            }
+        }
+
+        .q-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(28px, 3.5vw, 40px);
+            font-weight: 900;
+            color: var(--primary);
+            text-align: center;
+            margin-bottom: 24px;
+            letter-spacing: -0.01em;
+        }
+
+        .q-situation {
+            font-family: 'Inter', sans-serif;
+            font-size: 17px;
+            font-weight: 500;
+            line-height: 1.7;
+            color: #334155;
+            background: #f8fafc;
+            border-left: 5px solid var(--accent);
+            padding: 20px 24px;
+            border-radius: 0 16px 16px 0;
+            margin-bottom: 32px;
+            text-align: justify;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
+            border-top: 1px solid #e2e8f0;
+            border-right: 1px solid #e2e8f0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="app-wrapper">
+        <header class="header-bar">
+            <div class="title-block">
+                <h1 id="game-title">GIẢI MÃ NHÀ NƯỚC VÀ CÁCH MẠNG XÃ HỘI</h1>
+                <p id="game-subtitle">Chọn mảnh ghép, trả lời đúng để khám phá bức tranh</p>
+            </div>
+            <div class="controls">
+                <button type="button" id="show-answers" class="btn">Hiện đáp án</button>
+                <div class="progress-box">
+                    <span>Đã mở</span>
+                    <span id="progress-count">0</span>
+                    <span>/6</span>
+                </div>
+                <button type="button" id="reset-btn" class="btn btn-primary">↻ Chơi lại</button>
+            </div>
+        </header>
+
+        <main class="stage-area">
+            <div class="stage" id="stage">
+                <!-- Hình nền kết quả -->
+                <img src="background.png" alt="Bức tranh lịch sử"
+                    style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; image-rendering: high-quality; filter: contrast(1.08) saturate(1.1) brightness(1.02); display: block; z-index: 0;" />
+                <div id="image-caption" class="hidden"
+                    style="position: absolute; bottom: 24px; right: 24px; background: linear-gradient(135deg, rgba(30, 41, 59, 0.95), rgba(15, 23, 42, 0.95)); color: #fff; padding: 18px 24px; border-radius: 16px; font-family: 'Inter', sans-serif; font-size: 15px; text-align: left; z-index: 5; backdrop-filter: blur(12px); box-shadow: 0 15px 35px rgba(15, 23, 42, 0.6), inset 0 2px 4px rgba(255,255,255,0.1); max-width: 360px; line-height: 1.6; border: 1px solid rgba(148, 163, 184, 0.2); transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1);">
+                    <strong
+                        style="color: #38bdf8; font-size: 16px; text-transform: uppercase; letter-spacing: 0.5px; display: block; margin-bottom: 8px; text-shadow: 0 2px 4px rgba(0,0,0,0.5);">Bối
+                        cảnh lịch sử:</strong> "Lênin và các chiến sĩ Hồng quân trên đường ra mặt trận Ba Lan năm 1920
+                    (15)"
+                </div>
+
+
+                <div class="pieces" id="pieces">
+                    <button type="button" class="piece" data-i="0"><span class="piece-num">01</span></button>
+                    <button type="button" class="piece" data-i="1"><span class="piece-num">02</span></button>
+                    <button type="button" class="piece" data-i="2"><span class="piece-num">03</span></button>
+                    <button type="button" class="piece" data-i="3"><span class="piece-num">04</span></button>
+                    <button type="button" class="piece" data-i="4"><span class="piece-num">05</span></button>
+                    <button type="button" class="piece" data-i="5"><span class="piece-num">06</span></button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal cho câu hỏi -->
+    <div class="overlay hidden" id="overlay">
+        <section class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-kicker">
+            <div class="modal-head">
+                <div style="display: flex; align-items: baseline; gap: 8px;">
+                    <span id="modal-kicker">MẢNH GHÉP</span>
+                    <span id="modal-num"></span>
+                </div>
+                <button type="button" class="close-x" id="close-btn" aria-label="Đóng">✕</button>
+            </div>
+
+            <div class="question hidden" data-q="0">
+                <h3 class="q-title">Câu 1: Vai trò của Nhà nước</h3>
+                <div class="q-situation"><strong>Tình huống:</strong> Khi xảy ra thiên tai, Nhà nước huy động ngân sách,
+                    lực lượng cứu hộ và các nguồn lực xã hội để hỗ trợ người dân.<br><br><strong>Hỏi:</strong> Theo quan
+                    điểm chủ nghĩa Mác – Lênin, hoạt động này thể hiện vai trò nào của Nhà nước?</div>
+                <div class="answers">
+                    <button type="button" class="ans" data-k="0"><span class="badge">A</span><span class="ans-text">Chỉ
+                            bảo vệ lợi ích của một cá nhân trong xã hội.</span></button>
+                    <button type="button" class="ans" data-k="1"><span class="badge">B</span><span class="ans-text">Thực
+                            hiện chức năng quản lý xã hội và bảo đảm trật tự.</span></button>
+                    <button type="button" class="ans" data-k="2"><span class="badge">C</span><span class="ans-text">Xóa
+                            bỏ hoàn toàn sự khác biệt giữa các giai cấp.</span></button>
+                    <button type="button" class="ans" data-k="3"><span class="badge">D</span><span class="ans-text">Thay
+                            thế mọi hoạt động của người dân.</span></button>
+                </div>
+            </div>
+
+            <div class="question hidden" data-q="1">
+                <h3 class="q-title">Câu 2: Bản chất của Nhà nước</h3>
+                <div class="q-situation"><strong>Tình huống:</strong> Trong xã hội hiện đại, Nhà nước ban hành các chính
+                    sách về thuế, tiền lương và phúc lợi xã hội.<br><br><strong>Hỏi:</strong> Theo quan điểm Mác –
+                    Lênin, điều gì phản ánh bản chất của Nhà nước?</div>
+                <div class="answers">
+                    <button type="button" class="ans" data-k="0"><span class="badge">A</span><span class="ans-text">Nhà
+                            nước luôn đứng ngoài mọi quan hệ giai cấp.</span></button>
+                    <button type="button" class="ans" data-k="1"><span class="badge">B</span><span class="ans-text">Nhà
+                            nước chỉ tồn tại để phục vụ lợi ích kinh tế.</span></button>
+                    <button type="button" class="ans" data-k="2"><span class="badge">C</span><span class="ans-text">Nhà
+                            nước mang bản chất giai cấp, đồng thời thực hiện chức năng xã hội.</span></button>
+                    <button type="button" class="ans" data-k="3"><span class="badge">D</span><span class="ans-text">Nhà
+                            nước được hình thành hoàn toàn từ ý chí cá nhân.</span></button>
+                </div>
+            </div>
+
+            <div class="question hidden" data-q="2">
+                <h3 class="q-title">Câu 3: Nguồn gốc ra đời của Nhà nước</h3>
+                <div class="q-situation"><strong>Tình huống:</strong> Trong lịch sử, khi xã hội xuất hiện chế độ tư hữu,
+                    phân hóa giàu nghèo và mâu thuẫn giai cấp ngày càng gay gắt, một tổ chức quyền lực đặc biệt dần hình
+                    thành để duy trì trật tự xã hội.<br><br><strong>Hỏi:</strong> Theo chủ nghĩa Mác – Lênin, Nhà nước
+                    ra đời do nguyên nhân nào?
+                </div>
+                <div class="answers">
+                    <button type="button" class="ans" data-k="0"><span class="badge">A</span><span class="ans-text">Nhu
+                            cầu tự nhiên của con người muốn có người lãnh đạo.</span></button>
+                    <button type="button" class="ans" data-k="1"><span class="badge">B</span><span class="ans-text">Sự
+                            phát triển của lực lượng sản xuất và những mâu thuẫn giai cấp không thể điều
+                            hòa.</span></button>
+                    <button type="button" class="ans" data-k="2"><span class="badge">C</span><span class="ans-text">Mong
+                            muốn của một cá nhân muốn nắm quyền lực.</span></button>
+                    <button type="button" class="ans" data-k="3"><span class="badge">D</span><span class="ans-text">Sự
+                            phát triển của khoa học và công nghệ.</span></button>
+                </div>
+            </div>
+
+            <div class="question hidden" data-q="3">
+                <h3 class="q-title">Câu 4: Chức năng của Nhà nước</h3>
+                <div class="q-situation"><strong>Tình huống:</strong> Trước tình trạng ô nhiễm môi trường, Nhà nước ban
+                    hành quy định xử phạt doanh nghiệp xả thải trái phép, đồng thời triển khai các chương trình bảo vệ
+                    môi trường.<br><br><strong>Hỏi:</strong> Tình huống này thể hiện điều gì?</div>
+                <div class="answers">
+                    <button type="button" class="ans" data-k="0"><span class="badge">A</span><span class="ans-text">Nhà
+                            nước chỉ thực hiện chức năng trấn áp.</span></button>
+                    <button type="button" class="ans" data-k="1"><span class="badge">B</span><span class="ans-text">Nhà
+                            nước không có vai trò trong các vấn đề xã hội.</span></button>
+                    <button type="button" class="ans" data-k="2"><span class="badge">C</span><span class="ans-text">Nhà
+                            nước thực hiện chức năng đối nội và quản lý xã hội.</span></button>
+                    <button type="button" class="ans" data-k="3"><span class="badge">D</span><span class="ans-text">Nhà
+                            nước chỉ bảo vệ lợi ích của doanh nghiệp.</span></button>
+                </div>
+            </div>
+
+            <div class="question hidden" data-q="4">
+                <h3 class="q-title">Câu 5: Vai trò của cách mạng xã hội</h3>
+                <div class="q-situation"><strong>Tình huống:</strong> Khi mâu thuẫn giữa lực lượng sản xuất và quan hệ
+                    sản xuất trở nên gay gắt, xã hội có thể xuất hiện những biến đổi sâu sắc về chính trị, kinh tế và xã
+                    hội.<br><br><strong>Hỏi:</strong> Theo chủ nghĩa Mác – Lênin, cách mạng xã hội có vai trò gì?</div>
+                <div class="answers">
+                    <button type="button" class="ans" data-k="0"><span class="badge">A</span><span class="ans-text">Duy
+                            trì nguyên trạng mọi quan hệ xã hội.</span></button>
+                    <button type="button" class="ans" data-k="1"><span class="badge">B</span><span class="ans-text">Thay
+                            thế hình thái KT-XH cũ bằng hình thái KT-XH mới tiến bộ hơn.</span></button>
+                    <button type="button" class="ans" data-k="2"><span class="badge">C</span><span class="ans-text">Chỉ
+                            thay đổi người đứng đầu Nhà nước.</span></button>
+                    <button type="button" class="ans" data-k="3"><span class="badge">D</span><span class="ans-text">Chỉ
+                            cải thiện đời sống kinh tế mà không làm thay đổi xã hội.</span></button>
+                </div>
+            </div>
+
+            <div class="question hidden" data-q="5">
+                <h3 class="q-title">Câu 6: Điều kiện của cách mạng xã hội</h3>
+                <div class="q-situation"><strong>Tình huống:</strong> Trong thực tế, một xã hội có thể xuất hiện nhiều
+                    bất bình đẳng và mâu thuẫn. Tuy nhiên, không phải mọi mâu thuẫn đều dẫn đến cách mạng xã
+                    hội.<br><br><strong>Hỏi:</strong> Theo quan điểm Mác – Lênin, yếu tố nào có ý nghĩa quan trọng để
+                    cách mạng xã hội diễn ra?</div>
+                <div class="answers">
+                    <button type="button" class="ans" data-k="0"><span class="badge">A</span><span class="ans-text">Chỉ
+                            cần người dân không hài lòng với một chính sách.</span></button>
+                    <button type="button" class="ans" data-k="1"><span class="badge">B</span><span class="ans-text">Chỉ
+                            cần nền kinh tế phát triển nhanh chóng.</span></button>
+                    <button type="button" class="ans" data-k="2"><span class="badge">C</span><span class="ans-text">Mâu
+                            thuẫn gay gắt, cùng với sự trưởng thành của lực lượng cách mạng.</span></button>
+                    <button type="button" class="ans" data-k="3"><span class="badge">D</span><span class="ans-text">Chỉ
+                            cần thay đổi một vài quy định pháp luật.</span></button>
+                </div>
+            </div>
+
+            <div class="feedback" aria-live="assertive">
+                <p id="fb-wrong" class="hidden" style="margin: 0;">Chưa đúng, hãy thử lại!</p>
+                <p id="fb-right" class="hidden" style="margin: 0;">Chính xác!</p>
+            </div>
+
+            <!-- Khung giải thích lý thuyết -->
+            <div id="explanation-box" class="hidden"
+                style="margin-top: 24px; padding: 24px; background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 20px; text-align: left; animation: slideUp 0.4s ease; box-shadow: inset 0 2px 5px rgba(255,255,255,1), 0 10px 20px rgba(59,130,246,0.1);">
+                <p id="explanation-text" style="font-size: 16px; line-height: 1.6; color: #1e3a8a; margin: 0;"></p>
+                <div style="text-align: center; margin-top: 24px;">
+                    <button type="button" class="btn btn-primary" id="btn-continue">Tiếp tục mở mảnh ghép ➔</button>
+                </div>
+            </div>
+            <style>
+                @keyframes slideUp {
+                    from {
+                        transform: translateY(10px);
+                        opacity: 0;
+                    }
+
+                    to {
+                        transform: translateY(0);
+                        opacity: 1;
+                    }
+                }
+
+                .q-title {
+                    font-family: 'Playfair Display', serif;
+                    font-size: clamp(28px, 3.5vw, 40px);
+                    font-weight: 900;
+                    color: var(--primary);
+                    text-align: center;
+                    margin-bottom: 24px;
+                    letter-spacing: -0.01em;
+                }
+
+                .q-situation {
+                    font-family: 'Inter', sans-serif;
+                    font-size: 17px;
+                    font-weight: 500;
+                    line-height: 1.7;
+                    color: #334155;
+                    background: #f8fafc;
+                    border-left: 5px solid var(--accent);
+                    padding: 20px 24px;
+                    border-radius: 0 16px 16px 0;
+                    margin-bottom: 32px;
+                    text-align: justify;
+                    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
+                    border-top: 1px solid #e2e8f0;
+                    border-right: 1px solid #e2e8f0;
+                    border-bottom: 1px solid #e2e8f0;
+                }
+            </style>
+        </section>
+    </div>
+
+    <!-- Hoàn thành -->
+    <div class="complete hidden" id="complete">
+        <div id="confetti-layer"></div>
+        <section class="complete-card" role="status">
+            <p id="complete-text">HOÀN THÀNH!<br>Bạn đã khám phá thành công bức tranh lịch sử!</p>
+            <button type="button" class="btn btn-primary" id="complete-continue">👀 Xem toàn cảnh bức tranh</button>
+        </section>
+    </div>
+
+    <script>
+        (function () {
+            // Đáp án đúng cho từng câu (A=0, B=1, C=2, D=3)
+            const KEY = [1, 2, 1, 2, 1, 2];
+
+            const EXPLANATIONS = [
+                "Nhà nước không chỉ quản lý xã hội mà còn giải quyết các vấn đề chung như thiên tai, giáo dục và y tế, nhằm bảo vệ lợi ích cộng đồng.",
+                "Nhà nước mang bản chất giai cấp, bảo vệ lợi ích của giai cấp thống trị, đồng thời thực hiện các chức năng phục vụ xã hội.",
+                "Nhà nước ra đời khi xã hội xuất hiện tư hữu, phân chia giai cấp và mâu thuẫn giữa các giai cấp trở nên không thể điều hòa.",
+                "Việc ban hành luật và xử phạt doanh nghiệp gây ô nhiễm là hoạt động quản lý các vấn đề bên trong đất nước, thuộc chức năng đối nội của Nhà nước.",
+                "Cách mạng xã hội giúp thay thế xã hội cũ bằng một xã hội mới tiến bộ hơn, làm thay đổi căn bản các quan hệ xã hội.",
+                "Cách mạng xã hội diễn ra khi mâu thuẫn xã hội trở nên gay gắt và lực lượng cách mạng đã đủ trưởng thành để thực hiện sự thay đổi."
+            ];
+
+            const pieces = [...document.querySelectorAll('.piece')];
+            const questions = [...document.querySelectorAll('.question')];
+            const overlay = document.getElementById('overlay');
+            const modal = document.getElementById('modal');
+            const fbW = document.getElementById('fb-wrong');
+            const fbR = document.getElementById('fb-right');
+            const expBox = document.getElementById('explanation-box');
+            const expText = document.getElementById('explanation-text');
+            const btnContinue = document.getElementById('btn-continue');
+            const countEl = document.getElementById('progress-count');
+            const completeEl = document.getElementById('complete');
+            const confettiLayer = document.getElementById('confetti-layer');
+            let opened = new Set();
+            let current = null;
+            let busy = false;
+
+            function clearState(q) {
+                q.querySelectorAll('.ans').forEach(a => a.classList.remove('wrong', 'right'));
+                q.querySelector('.answers').classList.remove('locked');
+            }
+
+            function openQ(i) {
+                if (current !== null || busy || opened.has(i)) return;
+                current = i;
+                questions.forEach(q => q.classList.add('hidden'));
+                const q = questions[i];
+                clearState(q);
+                q.classList.remove('hidden');
+                fbW.classList.add('hidden');
+                fbR.classList.add('hidden');
+                expBox.classList.add('hidden');
+                document.getElementById('modal-num').textContent = String(i + 1).padStart(2, '0');
+                overlay.classList.remove('hidden');
+            }
+
+            function closeModal() {
+                overlay.classList.add('hidden');
+                if (current !== null) clearState(questions[current]);
+                current = null;
+                busy = false;
+            }
+
+            function shake(el) {
+                el.classList.remove('shake');
+                void el.offsetWidth;
+                el.classList.add('shake');
+            }
+
+            function answer(btn) {
+                if (current === null || busy) return;
+                const q = questions[current];
+                const k = +btn.dataset.k;
+                q.querySelectorAll('.ans').forEach(a => a.classList.remove('wrong'));
+
+                if (k === KEY[current]) {
+                    busy = true;
+                    q.querySelector('.answers').classList.add('locked');
+                    btn.classList.add('right');
+                    fbW.classList.add('hidden');
+                    fbR.classList.remove('hidden');
+
+                    // Show explanation instead of auto-closing
+                    expText.innerHTML = "<strong>Ý nghĩa:</strong> " + EXPLANATIONS[current];
+                    expBox.classList.remove('hidden');
+
+                } else {
+                    btn.classList.add('wrong');
+                    fbR.classList.add('hidden');
+                    fbW.classList.remove('hidden');
+                    shake(modal);
+                }
+            }
+
+            // Handle Continue button
+            btnContinue.addEventListener('click', () => {
+                if (current === null) return;
+                const idx = current;
+                opened.add(idx);
+                const p = pieces[idx];
+                p.classList.add('opened');
+                p.disabled = true;
+
+                setTimeout(() => p.classList.add('gone'), 500);
+                countEl.textContent = opened.size;
+                closeModal();
+
+                if (opened.size === 6) {
+                    pieces.forEach(p => p.disabled = true);
+                    finish();
+                }
+            });
+
+            function finish() {
+                confettiLayer.innerHTML = '';
+                const colors = ['#1e3a8a', '#3b82f6', '#93c5fd', '#f8fafc', '#38bdf8', '#2563eb'];
+                for (let n = 0; n < 100; n++) {
+                    const c = document.createElement('span');
+                    c.className = 'confetti';
+                    c.style.left = Math.random() * 100 + '%';
+                    c.style.background = colors[n % colors.length];
+                    c.style.borderRadius = n % 3 === 0 ? '50%' : '4px';
+                    c.style.animationDuration = (2.5 + Math.random() * 2) + 's';
+                    c.style.animationDelay = (Math.random() * 0.5) + 's';
+                    confettiLayer.appendChild(c);
+                }
+
+                setTimeout(() => {
+                    completeEl.classList.remove('hidden');
+                    const caption = document.getElementById('image-caption');
+                    if (caption) caption.classList.remove('hidden');
+                }, 500);
+            }
+
+            function reset() {
+                overlay.classList.add('hidden');
+                questions.forEach(q => {
+                    clearState(q);
+                    q.classList.add('hidden');
+                });
+                fbW.classList.add('hidden');
+                fbR.classList.add('hidden');
+                expBox.classList.add('hidden');
+                current = null;
+                busy = false;
+                opened = new Set();
+
+                pieces.forEach(p => {
+                    p.classList.remove('opened', 'gone', 'shake');
+                    p.disabled = false;
+                });
+
+                countEl.textContent = '0';
+                completeEl.classList.add('hidden');
+                const caption = document.getElementById('image-caption');
+                if (caption) caption.classList.add('hidden');
+                confettiLayer.innerHTML = '';
+            }
+
+            // Gán sự kiện
+            pieces.forEach(p => p.addEventListener('click', () => openQ(+p.dataset.i)));
+
+            document.querySelectorAll('.ans').forEach(a => {
+                a.addEventListener('click', () => answer(a));
+            });
+
+            document.getElementById('close-btn').addEventListener('click', () => {
+                if (!busy) closeModal();
+            });
+
+            overlay.addEventListener('click', e => {
+                // If busy (explanation showing), don't close on overlay click
+                if (e.target === overlay && !busy) closeModal();
+            });
+
+            document.addEventListener('keydown', e => {
+                if (e.key === 'Escape' && current !== null && !busy) closeModal();
+            });
+
+            document.getElementById('reset-btn').addEventListener('click', reset);
+
+            document.getElementById('show-answers').addEventListener('click', () => {
+                const caption = document.getElementById('image-caption');
+                if (caption) caption.classList.remove('hidden');
+                pieces.forEach(p => {
+                    p.classList.add('opened', 'gone');
+                    p.disabled = true;
+                });
+            });
+
+            document.getElementById('complete-continue').addEventListener('click', () => {
+                completeEl.classList.add('hidden');
+                const caption = document.getElementById('image-caption');
+                if (caption) caption.classList.add('hidden');
+            });
+        })();
+    </script>
+</body>
+
+</html>
