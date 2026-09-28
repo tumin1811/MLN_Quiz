@@ -175,6 +175,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            position: relative;
         }
 
         .stage {
@@ -1210,8 +1211,6 @@
 
             document.getElementById('complete-continue').addEventListener('click', () => {
                 completeEl.classList.add('hidden');
-                const caption = document.getElementById('image-caption');
-                if (caption) caption.classList.add('hidden');
             });
         })();
     </script>
