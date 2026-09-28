@@ -692,7 +692,6 @@
                 <p id="game-subtitle">Chọn mảnh ghép, trả lời đúng để khám phá bức tranh</p>
             </div>
             <div class="controls">
-                <button type="button" id="show-answers" class="btn">Hiện đáp án</button>
                 <div class="progress-box">
                     <span>Đã mở</span>
                     <span id="progress-count">0</span>
@@ -1200,14 +1199,6 @@
 
             document.getElementById('reset-btn').addEventListener('click', reset);
 
-            document.getElementById('show-answers').addEventListener('click', () => {
-                const caption = document.getElementById('image-caption');
-                if (caption) caption.classList.remove('hidden');
-                pieces.forEach(p => {
-                    p.classList.add('opened', 'gone');
-                    p.disabled = true;
-                });
-            });
 
             document.getElementById('complete-continue').addEventListener('click', () => {
                 completeEl.classList.add('hidden');
