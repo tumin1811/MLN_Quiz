@@ -305,7 +305,8 @@
             background: rgba(255, 255, 255, 0.98);
             border-radius: 32px;
             position: relative;
-            overflow: hidden;
+            overflow-y: auto;
+            overflow-x: hidden;
             box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 1);
             padding: clamp(32px, 5vh, 48px);
             border: 1px solid rgba(255, 255, 255, 0.5);
@@ -1185,16 +1186,22 @@
             });
 
             document.getElementById('close-btn').addEventListener('click', () => {
-                if (!busy) closeModal();
+                if (busy) btnContinue.click();
+                else closeModal();
             });
 
             overlay.addEventListener('click', e => {
-                // If busy (explanation showing), don't close on overlay click
-                if (e.target === overlay && !busy) closeModal();
+                if (e.target === overlay) {
+                    if (busy) btnContinue.click();
+                    else closeModal();
+                }
             });
 
             document.addEventListener('keydown', e => {
-                if (e.key === 'Escape' && current !== null && !busy) closeModal();
+                if (e.key === 'Escape' && current !== null) {
+                    if (busy) btnContinue.click();
+                    else closeModal();
+                }
             });
 
             document.getElementById('reset-btn').addEventListener('click', reset);

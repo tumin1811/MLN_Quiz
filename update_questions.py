@@ -263,16 +263,22 @@ new_modal_and_js = """<!-- Modal cho câu hỏi -->
             });
             
             document.getElementById('close-btn').addEventListener('click', () => {
-                if (!busy) closeModal();
+                if (busy) btnContinue.click();
+                else closeModal();
             });
             
             overlay.addEventListener('click', e => {
-                // If busy (explanation showing), don't close on overlay click
-                if (e.target === overlay && !busy) closeModal();
+                if (e.target === overlay) {
+                    if (busy) btnContinue.click();
+                    else closeModal();
+                }
             });
             
             document.addEventListener('keydown', e => {
-                if (e.key === 'Escape' && current !== null && !busy) closeModal();
+                if (e.key === 'Escape' && current !== null) {
+                    if (busy) btnContinue.click();
+                    else closeModal();
+                }
             });
             
             document.getElementById('reset-btn').addEventListener('click', reset);

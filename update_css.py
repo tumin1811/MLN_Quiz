@@ -231,7 +231,7 @@ new_head = """<!DOCTYPE html>
         .modal {
             width: min(900px, 94vw); max-height: 92vh; display: flex; flex-direction: column;
             background: rgba(255,255,255,0.98); 
-            border-radius: 32px; position: relative; overflow: hidden;
+            border-radius: 32px; position: relative; overflow-y: auto; overflow-x: hidden;
             box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255,255,255,1);
             padding: clamp(32px, 5vh, 48px);
             border: 1px solid rgba(255,255,255,0.5);
